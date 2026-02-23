@@ -72,7 +72,7 @@ def generate_report(models_dir, analysis_dir, plots_dir, output_dir):
     pdf.image(os.path.join(plots_dir, 'model_comparison.png'), x=15, w=180)
     pdf.ln(85)
     
-    # --- 3. Sensitivity Analysis ---
+    
     pdf.add_page()
     pdf.chapter_title('3. Error Sensitivity Analysis')
     
@@ -99,7 +99,7 @@ def generate_report(models_dir, analysis_dir, plots_dir, output_dir):
     pdf.image(os.path.join(plots_dir, 'angle_sensitivity.png'), x=15, w=180)
     pdf.ln(85)
     
-    # --- 4. Conclusion ---
+
     pdf.chapter_title('4. Conclusion & Defense Application Context')
     conclusion_text = (
         "The project successfully validates the use of ensemble tree methods for rapid "

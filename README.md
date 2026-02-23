@@ -1,11 +1,11 @@
 # Ballistic Trajectory Prediction and Impact Analysis using Machine Learning
 
-## 🎯 Problem Statement
+## Problem Statement
 In defense and artillery applications, predicting the exact impact point of a projectile is complex due to environmental noise and non-linear physical interactions. Traditional firing tables and analytical physics models are often rigid and compute-heavy when factoring in multiple dynamic variables. This project aims to validate the use of machine learning algorithms to rapidly approximate projectile trajectories, predict impact distance, and estimate maximum height. It also evaluates how robustly ML models can learn the physical bounds when subjected to errors in launch parameters, specifically launch angle deviations.
 
 ---
 
-## 📐 Physics Formula Used
+## Physics Formula Used
 The foundation of the synthetic data lies in the classical mechanics equations for ideal projectile motion. 
 
 - **Impact Range ($R$)**: The total horizontal distance traveled.
@@ -20,7 +20,7 @@ Where:
 
 ---
 
-## 📊 Dataset Generation Explanation
+## Dataset Generation Explanation
 To simulate real-world data collection, a custom Python script generated 10,000 synthetic ballistic trajectories with randomized parameters:
 1. **Initial Velocity**: Range of 300 to 1000 m/s (equivalent to standard artillery or rifle muzzle velocities).
 2. **Launch Angle**: Range of 10 to 80 degrees.
@@ -30,7 +30,7 @@ To simulate real-world data collection, a custom Python script generated 10,000 
 
 ---
 
-## 🧠 ML Models Used
+## ML Models Used
 The noisy dataset was split into training and testing sets (80/20). Two supervised learning regression models were trained to predict the final impact range and maximum height based on velocity, angle, and gravity:
 
 1. **Linear Regression**: Used as a baseline. It struggles with the trigonometric functions ($\sin(2\theta)$) and squaring operations present in the physical laws.
@@ -38,7 +38,7 @@ The noisy dataset was split into training and testing sets (80/20). Two supervis
 
 ---
 
-## 📉 Error Comparison
+## Error Comparison
 The models were evaluated using Root Mean Squared Error (RMSE) and R-Squared ($R^2$) metrics.
 
 - **Linear Regression Performance**:
@@ -55,7 +55,7 @@ A dedicated sensitivity analysis was conducted to see how a slight miscalculatio
 
 ---
 
-## 🖼️ Graph Screenshots
+## Graph Screenshots
 
 ### 1. Model Predictions vs Actual Simluation
 *Random Forest (Blue) stays perfectly aligned with the ideal prediction line, whereas Linear Regression (Red) deviates significantly.*
@@ -71,7 +71,7 @@ A dedicated sensitivity analysis was conducted to see how a slight miscalculatio
 
 ---
 
-## 🛡️ Conclusion & Defense Relevance
+## Conclusion & Defense Relevance
 The project successfully validates that ensemble tree methods, like Random Forests, can reverse-engineer complex non-linear physical systems. 
 
 **Defense Relevance**: 

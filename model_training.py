@@ -12,21 +12,17 @@ def train_and_evaluate_models(data_path, output_dir):
     print(f"Loading dataset from {data_path}...")
     df = pd.read_csv(data_path)
     
-    # Features: Velocity, Angle, Gravity
-    # Targets: Range (Noisy), Max Height (Noisy)
     X = df[['velocity', 'angle_deg', 'gravity']]
     y_range = df['range_noisy']
     y_height = df['max_height_noisy']
     
-    # Split the data
     X_train, X_test, y_range_train, y_range_test, y_height_train, y_height_test = train_test_split(
         X, y_range, y_height, test_size=0.2, random_state=42
     )
     
     metrics = {}
     models = {}
-    
-    # --- Linear Regression ---
+    # Linear Regression
     print("\nTraining Linear Regression models...")
     lr_range = LinearRegression()
     lr_range.fit(X_train, y_range_train)
@@ -34,7 +30,6 @@ def train_and_evaluate_models(data_path, output_dir):
     lr_height = LinearRegression()
     lr_height.fit(X_train, y_height_train)
     
-    # Evaluate LR
     lr_range_preds = lr_range.predict(X_test)
     lr_height_preds = lr_height.predict(X_test)
     
@@ -54,7 +49,7 @@ def train_and_evaluate_models(data_path, output_dir):
     models['lr_range'] = lr_range
     models['lr_height'] = lr_height
     
-    # --- Random Forest ---
+    #  Random Forest 
     print("Training Random Forest models...")
     rf_range = RandomForestRegressor(n_estimators=100, random_state=42, n_jobs=-1)
     rf_range.fit(X_train, y_range_train)
@@ -62,7 +57,7 @@ def train_and_evaluate_models(data_path, output_dir):
     rf_height = RandomForestRegressor(n_estimators=100, random_state=42, n_jobs=-1)
     rf_height.fit(X_train, y_height_train)
     
-    # Evaluate RF
+    
     rf_range_preds = rf_range.predict(X_test)
     rf_height_preds = rf_height.predict(X_test)
     
