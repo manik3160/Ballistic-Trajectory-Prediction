@@ -1,0 +1,9 @@
+{
+    "baseline_physics": 65239.55147808359,
+    "baseline_prediction": 65822.70108330018,
+    "max_impact_of_2_deg_error": {
+        "angle_error": -2.0,
+        "physics_range_change": -158.92026847222587,
+        "predicted_range_change": -345.8880425962125
+    }
+}
